@@ -1,5 +1,4 @@
 /* GLOBALS */
-
 :root {
     --dark-green: #1A3D19;
     --mono: monospace;
@@ -15,6 +14,8 @@ body {
 }
 
 /* Keyframe Animations */
+
+/* Spinning anim */
 @keyframes spin {
     from {
         transform: rotate(0deg);
@@ -23,7 +24,7 @@ body {
         transform: rotate(360deg);
     }
 }
-
+/* fade in anim */
 @keyframes fadeIn {
     from {
         opacity: 0%
@@ -33,16 +34,67 @@ body {
     }
 }
 
+@keyframes fireGlow {
+    0% {
+        background-size: 100%;
+        background-position: 2px 10px;
+    }
+    40% {
+        background-size: 110%;
+        background-position: center;
+    }
+    50% {
+        background-size: 100%;
+        background-position: 0px 5px;
+    }
+    60% {
+        background-size: 100%;
+        background-position: center;
+    }
+    80% {
+        background-size: 95%;
+        background-position: -2px 15px;
+    }
+    100% {
+        background-size: 100%;
+        background-position: 2px 10px;
+    }
+}
+
+@keyframes smokey {
+    0% {
+        opacity: 10%;
+    }
+    25% {
+        opacity: 20%;
+        border-radius: 50% 100%;
+        background-color: #adadad;
+    }
+    50% {
+        opacity: 30%;
+        border-radius: 0 100% 0 100%;
+    }
+    75% {
+        border-radius: 100% 50%;
+        background-color: #adadad;
+    }
+    100% {
+        opacity: 10%;
+    }
+}
+
+
 /* Root Container styles */
 #root {
-    width: 90vw;
-    height: 90vh;
+    width: 80vw;
+    height: 80vh;
     position: relative;
     margin: auto;
     margin-top: 5vh;
     margin-bottom: 5vh;
     background-color: var(--dark-green);
     border-radius: 5px 5px 5px 5px;
+    padding: 40px;
 }
 
 /* Initial interface styles */
@@ -86,20 +138,62 @@ body {
 }
 
 /* FIRE STYLES */
+
+/* fire div styles, add details using before and after selectors */
 .fire {
-    /* Need to create layers for each part of the element to handle the 
-    flames, logs and sparks */
-    width: 100px;
-    height: 100px;
-    border: 2px solid red;
+    width: 200px;
+    height: 200px;
+    border-radius: 50% 10% 50% 100%;
+    transform: rotate(-45deg);
+    background-image: radial-gradient(ellipse at center, red 20%, orange 35%, yellow 40%, transparent 85%);
+    background-position: -10px 10px;
+    background-repeat: no-repeat;
+    animation: 3s infinite fireGlow;
+    animation-timing-function: linear;
+    filter: drop-shadow(50px -50px 50px #FF8A55);
+}
+
+/* fire "log" */
+.fire:before {
+    border: 2px solid #3D2F08;
+    border-radius: 6px;
+    background-image: linear-gradient(45deg, #59380A, #945B06, #59380A);
+    /* Found that I needed to fill content with a character to ensure it displayed with the selectors */
+    content: '\A';
+    width: 200px;
+    height: 20px;
+    position: absolute;
+    top: 74%;
+    margin: auto;
+    right: 30%;
+    transform: rotate(45deg);
+}
+
+/* Smoke styles */
+.fire:after {
+    border: 6px double gray;
+    content: '\A';
+    position: absolute;
+    border-radius: 190% 0 190% 0;
+    width: 200px;
+    height: 15px;
+    transform: rotate(-45deg);
+    left: 35%;
+    top: -15%;
+    margin-left: 40px;
+    animation: smokey 5s infinite;
+    animation-timing-function: linear;
+}
+
+.storyText {
+    animation: 5s linear fadeIn;
 }
 
 .fire,
 .storyText { 
     margin: auto;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    animation: fadeIn 4s linear;
+    margin-top: 100px;
+    margin-bottom: 20px;
 }
 
 /* CABIN STYLES */

@@ -121,7 +121,7 @@ function fireStory() {
     // Create P element to store text
     let pEl = document.createElement('p');
     pEl.className = "storyText";
-    pEl.innerText = userName + " could smell smoke, they opened their eyes to see a fire.";
+    pEl.innerText = userName + " could smell smoke, they opened their eyes to see a single flame.";
 
     // create div to handle fire "image and animation"
     let fireDiv = document.createElement('div');
