@@ -4,7 +4,7 @@
 const ROOT_DIV = document.getElementById('root');
 
 // Welcome text string
-const hello = "$ Hello, World! Hit return to begin...";
+const hello = "$ Hello, World! My name is Ian, I am a Front End Developer. Hit return to begin...";
 
 // Username storage:
 let userName;
@@ -63,14 +63,15 @@ function promptName() {
     let inputEl = document.createElement('input');
     inputEl.id = "userName";
     inputEl.className = "input";
+    inputEl.placeholder = "$";
     inputEl.value = "";
 
     // default value text
-    let value = "$ Enter your name and hit return: ";
+    let value = "$ Enter your name and hit return or click the icons to work with me!";
 
     for (let i = 0; i < value.length; i++) {
         setTimeout(() => {
-            pEl.textContent += value[i];
+            pEl.innerHTML += value[i];
         }, 60 * i);
     }
 
@@ -83,7 +84,7 @@ function promptName() {
 }
 
 
-// STORY START FUNCTIONS --------------------------------------
+// FIRE STORY  FUNCTIONS --------------------------------------
 
 // initial load screen to begin "story" 
 function loadScreen() {
@@ -108,16 +109,16 @@ function loadScreen() {
     }, 5000)
 }
 
-function fireStory() {
-    // This function begins the "story"
-    /**
-     * I need to trigger a css animation with some basic story text
-     * This function needs to create a p element and then fill it with
-     * some generic story thing
-     * This function needs to fade in a "fire animation div"
-     */
-    console.log("Story Trigger");
+// clear fire and call next trigger after a second
+function extinguishFire() {
+    clearScreen();
+    setTimeout(() => {
+        cabinStory();
+    }, 1000);
+}
 
+// create fire element and add event listener
+function fireStory() {
     // Create P element to store text
     let pEl = document.createElement('p');
     pEl.className = "storyText";
@@ -127,9 +128,23 @@ function fireStory() {
     let fireDiv = document.createElement('div');
     fireDiv.className = "fire";
 
+    // onclick, extinguish trigger.
+    fireDiv.addEventListener('click', extinguishFire);
+
     ROOT_DIV.append(fireDiv, pEl);
 }
 
+
+// CABIN STORY FUNCTIONS --------------------------------------
+
+// create new text
+function cabinStory() {
+    console.log("cabin trigger");
+    let pEl = document.createElement('p');
+    pEl.innerHTML = userName + " could no longer see.";
+    pEl.style.color = "white";
+    ROOT_DIV.append(pEl);
+}
 
 // FUNCTION CALLS ---------------------------------------------
 welcomeText();

@@ -1,6 +1,6 @@
 /* GLOBALS */
 :root {
-    --dark-green: #1A3D19;
+    --dark-red: #050000;
     --mono: monospace;
 }
 
@@ -12,6 +12,46 @@ body {
     color: white;
     text-align: center;
 }
+
+/* NAVBAR STYLES */
+header {
+    background-color: black;
+}
+
+header > ul {
+    height: 5vh;
+    width: 90vw;
+    background-color: black;
+    margin: auto;
+    border-bottom: 4px solid silver;
+    margin-bottom: 10px;
+    z-index: 10;
+    display: flex;
+    flex-direction: row;
+}
+
+header > ul > li {
+    margin: auto;
+    color: white;
+    list-style: none;
+}
+
+i {
+    font-size: 2rem;
+    text-shadow: 0 0 20px red;
+}
+
+/* Root Container styles */
+#root {
+    width: 80vw;
+    height: 70vh;
+    position: relative;
+    margin: auto;
+    background-color: var(--dark-red);
+    border-radius: 5px 5px 5px 5px;
+    padding: 70px;
+}
+
 
 /* Keyframe Animations */
 
@@ -83,28 +123,16 @@ body {
     }
 }
 
-
-/* Root Container styles */
-#root {
-    width: 80vw;
-    height: 80vh;
-    position: relative;
-    margin: auto;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
-    background-color: var(--dark-green);
-    border-radius: 5px 5px 5px 5px;
-    padding: 40px;
-}
-
 /* Initial interface styles */
 .welcome,
-.input {
+.input,
+.loadText {
     text-shadow: 0 0 2px green;
-    font-size: 1rem;
+    font-size: 2rem;
     font-family: var(--mono);
     font-weight: strong;
     padding: 5px;
+    color: #C11;
 }
 
 .input {
@@ -131,10 +159,13 @@ body {
     animation-timing-function: linear;
 }
 
+.loading:hover {
+    cursor: wait;
+}
+
 .loadText {
     margin: auto;
     text-align: center;
-    color: white;
 }
 
 /* FIRE STYLES */
@@ -150,7 +181,7 @@ body {
     background-repeat: no-repeat;
     animation: 3s infinite fireGlow;
     animation-timing-function: linear;
-    filter: drop-shadow(50px -50px 50px #FF8A55);
+    filter: drop-shadow(50px -50px 70px #FF8A55);
 }
 
 /* fire "log" */
@@ -186,7 +217,7 @@ body {
 }
 
 .storyText {
-    animation: 5s linear fadeIn;
+    animation: 15s linear fadeIn;
 }
 
 .fire,
@@ -194,6 +225,14 @@ body {
     margin: auto;
     margin-top: 100px;
     margin-bottom: 20px;
+}
+
+.fire:hover {
+    cursor: grab;
+}
+
+.fire:active {
+    cursor: grabbing;
 }
 
 /* CABIN STYLES */
