@@ -1,3 +1,5 @@
+/* GLOBALS */
+
 :root {
     --dark-green: #1A3D19;
     --mono: monospace;
@@ -7,6 +9,31 @@ body {
     background-color: black;
 }
 
+.storyText {
+    color: white;
+    text-align: center;
+}
+
+/* Keyframe Animations */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0%
+    }
+    to {
+        opacity: 100%;
+    }
+}
+
+/* Root Container styles */
 #root {
     width: 90vw;
     height: 90vh;
@@ -18,7 +45,62 @@ body {
     border-radius: 5px 5px 5px 5px;
 }
 
-.welcome {
+/* Initial interface styles */
+.welcome,
+.input {
+    text-shadow: 0 0 2px green;
+    font-size: 1rem;
     font-family: var(--mono);
+    font-weight: strong;
     padding: 5px;
 }
+
+.input {
+    background-color: transparent;
+    border: none;
+    width: 60vw;
+}
+
+.input:focus {
+    outline: none;
+}
+
+/* LOADING STYLES */
+
+.loading {
+    width: 70px;
+    height: 70px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 60px;
+    border: 8px outset gray;
+    border-radius: 50%;
+    animation: spin 3s infinite;
+    animation-timing-function: linear;
+}
+
+.loadText {
+    margin: auto;
+    text-align: center;
+    color: white;
+}
+
+/* FIRE STYLES */
+.fire {
+    /* Need to create layers for each part of the element to handle the 
+    flames, logs and sparks */
+    width: 100px;
+    height: 100px;
+    border: 2px solid red;
+}
+
+.fire,
+.storyText { 
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    animation: fadeIn 4s linear;
+}
+
+/* CABIN STYLES */
+/* CLOUDS STYLES */
