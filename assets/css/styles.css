@@ -1,0 +1,24 @@
+:root {
+    --dark-green: #1A3D19;
+    --mono: monospace;
+}
+
+body {
+    background-color: black;
+}
+
+#root {
+    width: 90vw;
+    height: 90vh;
+    position: relative;
+    margin: auto;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    background-color: var(--dark-green);
+    border-radius: 5px 5px 5px 5px;
+}
+
+.welcome {
+    font-family: var(--mono);
+    padding: 5px;
+}
