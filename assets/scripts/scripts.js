@@ -139,11 +139,30 @@ function fireStory() {
 
 // create new text
 function cabinStory() {
-    console.log("cabin trigger");
+    // Render story text and append
     let pEl = document.createElement('p');
-    pEl.innerHTML = userName + " could no longer see.";
-    pEl.style.color = "white";
+    pEl.className = "storyText";
+    pEl.innerHTML = userName + " could no longer see. Their eyes needed to adjust to the darkness.";
     ROOT_DIV.append(pEl);
+
+    // Create Cabin divs - create 1 base, 2 windows, 1 door
+    let cabinDiv = document.createElement('div');
+    cabinDiv.classList = "cabin";
+    let windowDiv = document.createElement('div');
+    windowDiv.classList = "window";
+    let doorDiv = document.createElement('div');
+    doorDiv.classList = "door";
+
+    cabinDiv.append(doorDiv, windowDiv);
+
+    setTimeout(() => {
+        ROOT_DIV.append(cabinDiv);
+        changeText(pEl);
+    }, 5000);
+}
+
+function changeText(target) {
+    target.innerText = "What at first appeared to be a cabin, was just the office."
 }
 
 // FUNCTION CALLS ---------------------------------------------
