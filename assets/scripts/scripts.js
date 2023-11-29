@@ -137,8 +137,20 @@ function fireStory() {
 
 // CABIN STORY FUNCTIONS --------------------------------------
 
+// handle click for office items
+function handleOfficeClick(event) {
+    console.log(event.target);
+    if (event.target.id === "portfolio") {
+        displayPortfolio();
+    } else if (event.target.id === "story") {
+        continueCSS();
+    }
+}
+
 // create new text
 function cabinStory() {
+    let officeText = "What seemed at first to be a cabin, was just the office, " + userName + " sighed with relief. It was a strange dream."
+
     // Render story text and append
     let pEl = document.createElement('p');
     pEl.className = "storyText";
@@ -149,20 +161,40 @@ function cabinStory() {
     let cabinDiv = document.createElement('div');
     cabinDiv.classList = "cabin";
     let windowDiv = document.createElement('div');
+    windowDiv.id = "portfolio";
     windowDiv.classList = "window";
     let doorDiv = document.createElement('div');
+    doorDiv.id = "story";
     doorDiv.classList = "door";
 
     cabinDiv.append(doorDiv, windowDiv);
 
     setTimeout(() => {
         ROOT_DIV.append(cabinDiv);
-        changeText(pEl);
+        changeText(pEl, officeText);
     }, 5000);
+
+    cabinDiv.addEventListener('click', handleOfficeClick);
 }
 
-function changeText(target) {
-    target.innerText = "What at first appeared to be a cabin, was just the office."
+function changeText(target, text) {
+    target.innerText = text;
+}
+
+
+// PORTFOLIO FUNCTION ------------------------------------------
+
+// Display portfolio 
+function displayPortfolio() {
+    console.log("portfolio trigger");
+}
+
+
+// REMAINING STORY HANDLE --------------------------------------
+
+// Handle remaining CSS story
+function continueCSS() {
+    console.log("CSS Story continue trigger");
 }
 
 // FUNCTION CALLS ---------------------------------------------
